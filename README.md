@@ -20,6 +20,8 @@
 ## Wireframe
 <img width="1187" alt="Screen Shot 2021-08-02 at 10 19 08 AM" src="https://user-images.githubusercontent.com/53208269/127899935-7b2df826-de81-4474-86fe-5ed3ab70e9f3.png">
 
+## Domain Modeling
+<img width="1049" alt="Screen Shot 2021-08-02 at 3 42 02 PM" src="https://user-images.githubusercontent.com/53208269/127932614-ad8bd596-9ac9-4242-954b-a418325f08bb.png">
 
 
 
