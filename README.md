@@ -9,10 +9,8 @@
     - see how far they are from the location they’re planning 
     - so they can know what means of transportation are available for them to use 
 
-Stretch Goals: Airbnb API for lodging
-              Yelp API for popular locations 
 
-## User Stories – As a [], I want to [] so I can []
+## User Stories – 
 1. As a parent, I want to look at my saved travel plan so I can know what to pack for my children
 2. As a student on a budget, I want to know how far the destination is so I can control my mileage 
 3. As a user, I want to look up the daily weather in my city so I can plan my commute 
