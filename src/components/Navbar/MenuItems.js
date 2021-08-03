@@ -1,26 +1,21 @@
 const MenuItems = [
+  // {
+  //   title: 'Home',
+  //   url: '#',
+  //   cName: 'nav-links',
+  // },
   {
-    title: 'Home',
+    title: 'Stretch Goals',
     url: '#',
     cName: 'nav-links',
   },
   {
-    title: 'Services',
+    title: 'About Us',
     url: '#',
     cName: 'nav-links',
   },
   {
-    title: 'Products',
-    url: '#',
-    cName: 'nav-links',
-  },
-  {
-    title: 'Contact Us',
-    url: '#',
-    cName: 'nav-links',
-  },
-  {
-    title: 'Sign Up',
+    title: 'Log In',
     url: '#',
     cName: 'nav-links-mobile',
   },
