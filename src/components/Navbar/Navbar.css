@@ -1,5 +1,5 @@
 .NavbarItems {
-  background: linear-gradient(90deg, rgb(110,94,154), rgba(73,63,252,1) 100%);
+  background: linear-gradient(90deg, rgb(67, 39, 15), rgba(124,71,0,1) 100%);
   height: 80px;
   display: flex;
   justify-content: center;
@@ -13,6 +13,10 @@
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
+}
+
+#mountain {
+  height: 40px;
 }
 
 .fa-react {
@@ -57,7 +61,7 @@
   display: none;
 }
 
-img {
+#login {
   height: 50px;
   margin-left: 20px;
   border: 2px solid black;
