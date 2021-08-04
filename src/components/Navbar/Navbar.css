@@ -57,6 +57,12 @@
   display: none;
 }
 
+img {
+  height: 50px;
+  margin-left: 20px;
+  border: 2px solid black;
+}
+
 @media screen and (max-width: 960px) {
   .NavbarItems {
     position: relative;
@@ -126,11 +132,12 @@
 
   .nav-links-mobile:hover {
     background: white;
-    color: #6568f4;
+    /* color: #6568f4; */
+    color: black;
     transition: 250ms;
   }
 
-  Button {
-    display: none
-  }
+  
+
+
 }
