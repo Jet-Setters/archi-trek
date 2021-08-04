@@ -1,0 +1,10 @@
+.profile {
+  text-align: right;
+  box-sizing: border-box;
+}
+
+#button {
+  text-align: right;
+  box-sizing: border-box;
+  padding: 10px;
+}

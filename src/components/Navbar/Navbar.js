@@ -1,7 +1,9 @@
 import React from 'react';
 import MenuItems from './MenuItems.js';
-import { Button } from '../Button.js';
 import './Navbar.css';
+import LoginButton from '../LoginButton.js';
+import LogoutButton from '../LogoutButton.js';
+import { withAuth0 } from '@auth0/auth0-react';
 
 class Navbar extends React.Component {
   state = { clicked: false };
@@ -11,6 +13,7 @@ class Navbar extends React.Component {
   }
   
   render () {
+    console.log(this.props.auth0);
     return (
       <nav className = "NavbarItems">
         <h1 className = "navbar-logo" >Archi-Trek<i className = "fab fa-react"></i></h1>
@@ -29,10 +32,13 @@ class Navbar extends React.Component {
           })}
 
         </ul>
-        <Button>Log In</Button>
+
+        <LoginButton> Login </LoginButton>
+        <LogoutButton> Logout </LogoutButton>
+        {this.props.auth0.isAuthenticated && <img src={this.props.auth0.user.picture} alt = ""></img>}
       </nav>
     )
   }
 }
 
-export default Navbar;
+export default withAuth0(Navbar);
