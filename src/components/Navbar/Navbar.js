@@ -35,8 +35,10 @@ class Navbar extends React.Component {
 
         </ul>
 
+        <div className = "loginButton">
         <LoginButton> Login </LoginButton>
         <LogoutButton> Logout </LogoutButton>
+        </div>
         
         {this.props.auth0.isAuthenticated && 
         <img id = "login" src={this.props.auth0.user.picture} alt = "">
