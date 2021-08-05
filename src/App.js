@@ -17,6 +17,7 @@ class App extends React.Component {
       map: "",
       weather: [],
       covid: [],
+      planner: [],
       error: "",
       searchQuery: ""
     }
@@ -40,6 +41,12 @@ class App extends React.Component {
       const weatherAPI = `${local}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
       const weatherResponse = await axios.get(weatherAPI);
       this.setState({ weather: weatherResponse.data })
+
+      const dayPlannerAPI = `${local}/dayPlanner?searchQuery=${this.state.searchQuery}&start_date=${this.state.start_date}&end_date=${this.state.end_date}`;
+      const plannerResponse = await axios.get(dayPlannerAPI);
+      this.setState({ planner: plannerResponse.results });
+
+
   
       // const covidAPI = `${local}/covid?address=${this.state.location.display_name}`
       // const covidResponse = await axios.get(covidAPI);
@@ -69,7 +76,11 @@ class App extends React.Component {
             <Col>
               <WeatherGroup weather={this.state.weather} />
             </Col>
+            <Col>
+              <DayPlanner planner={this.state.planner} />
+            </Col>
           </Row>
+
         </Container>
       </div>
     );
