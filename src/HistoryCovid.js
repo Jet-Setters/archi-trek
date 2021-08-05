@@ -40,7 +40,7 @@ class HistoryCovid extends React.Component {
         ]
       }
     console.log("in child", this.props.covidOverview)
-    console.log("chart datas", chartData)
+    console.log("chart data", chartData)
     this.setState({ dataPie: chartObj })
     console.log("datapie", this.state.dataPie)
   }

@@ -73,11 +73,11 @@ class App extends React.Component {
             
             </Col>
             <Col>
-              <WeatherGroup weather={this.state.weather} />
+              <HistoryCovid covidOverview={this.state.covidOverview}/>
             </Col>
           </Row>
         </Container>
-        <HistoryCovid covidOverview={this.state.covidOverview}/>
+        <WeatherGroup weather={this.state.weather} />
       </div>
     );
   }

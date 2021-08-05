@@ -1,31 +1,30 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card'
-import styles from './Weather.module.css';
+// import styles from './index.css';
+import Table from 'react-bootstrap/Table'
+import Weather from './Weather.js'
 
-class Weather extends React.Component {
-    
+
+class WeatherGroup extends React.Component {
+  
+  
   render() {
     return(
-    <div id="weatherBox">
-    {this.props.weather.map((value, idx) => 
-      <Card key={idx} border="dark" className={styles.weatherCard}>
-        <Card.Img variant="top" src={value.icon} />
-          <Card.Title >{value.date}</Card.Title>
-        <Card.Body>
-          <Card.Text>
-          High: {value.maxtemp}°F
-          </Card.Text>
-          <Card.Text>
-          Low: {value.mintemp}°F
-          </Card.Text>
-          <Card.Text>
-          Forecast: {value.description}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    )}
+    <div id="weatherBox"> 
+    <Table striped bordered hover variant="dark" >
+      <thead>
+        <tr>
+          <th></th>
+          <th>Date</th>
+          <th>Forecast</th>
+          <th>Temperatures</th>
+        </tr>
+      </thead>
+      <tbody>
+      <Weather weather={this.props.weather} addItem={this.addItem}/>
+      </tbody>
+    </Table>
     </div>
   )}
 }
 
-export default Weather
+export default WeatherGroup

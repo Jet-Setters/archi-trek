@@ -17,7 +17,7 @@ class FormSearch extends React.Component {
             aria-label="Enter City Name"
             aria-describedby="basic-addon2"
             onChange={this.props.onChange}></FormControl>
-          <Button type="submit" variant="primary" id="button-addon2">
+          <Button type="submit" variant="dark" id="button-addon2">
             Explore!
           </Button>
         </InputGroup>
