@@ -32,11 +32,12 @@ class App extends React.Component {
       const response = await axios.get(locationAPI)
       this.setState({ location: response.data[0] })
       
-      const mapAPI = `${local}/map?lat=${this.state.lat}&lon=${this.state.lon}`;
-      const mapResponse = await axios.get(mapAPI);
-      this.setState({ map: mapResponse.config.url })
+      const mapAPI = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API}&center=${response.data[0].lat},${response.data[0].lon}&zoom=10`;
+      // const mapResponse = await axios.get(mapAPI);
+      // console.log(mapResponse)
+      this.setState({ map: mapAPI })
       
-      const weatherAPI = `${local}/weather?lat=${this.state.location.lat}&lon=${this.state.location.lon}&searchQuery=${this.state.searchQuery}`;
+      const weatherAPI = `${local}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
       const weatherResponse = await axios.get(weatherAPI);
       this.setState({ weather: weatherResponse.data })
   
