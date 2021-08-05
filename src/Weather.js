@@ -3,9 +3,6 @@ import styles from './index.css';
 
 
 class Weather extends React.Component {
-  constructor(props){
-    super(props);
-  }
   
   render() {
     return(
