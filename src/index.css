@@ -1,0 +1,17 @@
+.card border-dark {
+  margin: 5rem;
+  width: 10rem;
+}
+
+#weatherBox {
+  width: 60%;
+  margin: 4%;
+}
+
+td img {
+  width: 30%;
+}
+
+
+
+
