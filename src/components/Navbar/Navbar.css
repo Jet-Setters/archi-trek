@@ -10,6 +10,7 @@
 
 .navbar-logo {
   color: white;
+  font-family: 'Times New Roman', Times, serif;
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
