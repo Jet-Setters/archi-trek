@@ -14,7 +14,6 @@ class Navbar extends React.Component {
   }
   
   render () {
-    console.log(this.props.auth0);
     return (
       <nav className = "NavbarItems">
         <h1 className = "navbar-logo" >Archi-Trek <i className ="fas fa-mountain"></i></h1>
