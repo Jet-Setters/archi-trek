@@ -1,11 +1,11 @@
 const MenuItems = [
   {
-    title: 'Stretch Goals',
+    title: 'About Us',
     url: '#',
     cName: 'nav-links',
   },
   {
-    title: 'About Us',
+    title: 'Profile',
     url: '#',
     cName: 'nav-links',
   },
