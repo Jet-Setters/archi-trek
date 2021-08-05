@@ -1,0 +1,13 @@
+.weatherCard {
+  float: left;
+  /* width: 18rem; */
+  /* border-radius: 2vw black; */
+  margin: 1rem;
+}
+
+#weatherBox {
+  display: grid;
+  column-gap: 4rem;
+  row-gap: 4rem;
+  justify-items: center;
+}

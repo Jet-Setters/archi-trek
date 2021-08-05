@@ -8,6 +8,8 @@ import WeatherGroup from './WeatherGroup.js';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import DailyCovid from './CovidDaily.js';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -23,28 +25,28 @@ class App extends React.Component {
   }
 
   getLocation = async (e) => {
-    const local = "http://localhost:3002";
+    // const local = "http://localhost:3002";
+    const heroku = "https://archi-trek.herokuapp.com/"
     
       
     e.preventDefault();
       try {
-      const locationAPI = `${local}/location?searchQuery=${this.state.searchQuery}`;
+      const locationAPI = `${heroku}/location?searchQuery=${this.state.searchQuery}`;
       const response = await axios.get(locationAPI)
       this.setState({ location: response.data[0] })
       
       const mapAPI = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API}&center=${response.data[0].lat},${response.data[0].lon}&zoom=10`;
-      // const mapResponse = await axios.get(mapAPI);
-      // console.log(mapResponse)
       this.setState({ map: mapAPI })
       
-      const weatherAPI = `${local}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
+      const weatherAPI = `${heroku}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
       const weatherResponse = await axios.get(weatherAPI);
-      this.setState({ weather: weatherResponse.data })
+      const shorterWeather = weatherResponse.data.slice(0, 8)
+      this.setState({ weather: shorterWeather })
   
-      // const covidAPI = `${local}/covid?address=${this.state.location.display_name}`
-      // const covidResponse = await axios.get(covidAPI);
-      // this.setState({ covid: covidResponse.data })
-    //  console.log(this.state.searchQuery);
+      const covidAPI = `${heroku}/covid?address=${this.state.location.display_name}`
+      const covidResponse = await axios.get(covidAPI);
+      this.setState({ covid: covidResponse.data })
+      console.log(covidResponse.data)
       } catch (error) {
         // this.setState({errors: error.response.data.error, showError: true})
       }
@@ -71,6 +73,7 @@ class App extends React.Component {
             </Col>
           </Row>
         </Container>
+        <DailyCovid covidData={this.state.covid}/>
       </div>
     );
   }
