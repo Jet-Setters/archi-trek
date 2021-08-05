@@ -61,11 +61,13 @@
   display: none;
 }
 
-#login {
+#loginPic {
   height: 50px;
   margin-left: 20px;
   border: 2px solid black;
 }
+
+
 
 @media screen and (max-width: 960px) {
   .NavbarItems {
@@ -142,12 +144,19 @@
     transition: 250ms;
   }
 
-  #login {
-    margin-left: 20px;
-
+  #loginPic {
+    margin-left: 10px;
     border: 2px solid black;
   }
 
+  #loginButton {
+    padding: 10px;
+  }
+
+  #loginButton, #loginPic {
+    position: relative;
+    left: 107px;
+  }
   
 
 
