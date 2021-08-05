@@ -17,16 +17,18 @@ class App extends React.Component {
       map: "",
       weather: [],
       covid: [],
-      error: ""
+      error: "",
+      searchQuery: ""
     }
   }
 
   getLocation = async (e) => {
-    const local = "http://localhost:3002"
+    const local = "http://localhost:3002";
+    
       
     e.preventDefault();
       try {
-      const locationAPI = `${local}/location?&searchQuery=${this.state.searchQuery}`;
+      const locationAPI = `${local}/location?searchQuery=${this.state.searchQuery}`;
       const response = await axios.get(locationAPI)
       this.setState({ location: response.data[0] })
       
@@ -38,13 +40,17 @@ class App extends React.Component {
       const weatherResponse = await axios.get(weatherAPI);
       this.setState({ weather: weatherResponse.data })
   
-      const covidAPI = `${local}/covid?address=${this.state.location.display_name}`
-      const covidResponse = await axios.get(covidAPI);
-      this.setState({ covid: covidResponse.data })
-     
+      // const covidAPI = `${local}/covid?address=${this.state.location.display_name}`
+      // const covidResponse = await axios.get(covidAPI);
+      // this.setState({ covid: covidResponse.data })
+    //  console.log(this.state.searchQuery);
       } catch (error) {
-        this.setState({errors: error.response.data.error, showError: true})
+        // this.setState({errors: error.response.data.error, showError: true})
       }
+    }
+
+    onChange = async (e) => {
+      this.setState({ searchQuery: e.target.value })
     }
 
   render() {
@@ -54,7 +60,7 @@ class App extends React.Component {
         <Container fluid="lg" className="heroDiv">
           <Row>
             <Col>
-              <FormSearch getLocation={this.getLocation.bind(this)} onChange={this.onChange.bind(this)} />
+              <FormSearch getLocation={this.getLocation} onChange={this.onChange} />
             
               <MapCard map={this.state.map} location={this.state.location} lat={this.state.lat} lon={this.state.lon} />
             
