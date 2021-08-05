@@ -8,7 +8,7 @@ import WeatherGroup from './WeatherGroup.js';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import DailyCovid from './CovidDaily.js';
+import HistoryCovid from './HistoryCovid.js';
 
 
 class App extends React.Component {
@@ -18,34 +18,37 @@ class App extends React.Component {
       location: [],
       map: "",
       weather: [],
-      covid: [],
+      covidOverview: [],
+      covidDaily: [],
       error: "",
       searchQuery: ""
     }
   }
 
   getLocation = async (e) => {
-    // const local = "http://localhost:3002";
-    const heroku = "https://archi-trek.herokuapp.com/"
+    const local = "http://localhost:3002";
+    // const heroku = "https://archi-trek.herokuapp.com/"
     
       
     e.preventDefault();
       try {
-      const locationAPI = `${heroku}/location?searchQuery=${this.state.searchQuery}`;
+      const locationAPI = `${local}/location?searchQuery=${this.state.searchQuery}`;
       const response = await axios.get(locationAPI)
       this.setState({ location: response.data[0] })
       
       const mapAPI = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API}&center=${response.data[0].lat},${response.data[0].lon}&zoom=10`;
       this.setState({ map: mapAPI })
       
-      const weatherAPI = `${heroku}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
+      const weatherAPI = `${local}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
       const weatherResponse = await axios.get(weatherAPI);
       const shorterWeather = weatherResponse.data.slice(0, 8)
       this.setState({ weather: shorterWeather })
   
-      const covidAPI = `${heroku}/covid?address=${this.state.location.display_name}`
+      const covidAPI = `${local}/covid?address=${this.state.location.display_name}`
       const covidResponse = await axios.get(covidAPI);
-      this.setState({ covid: covidResponse.data })
+      this.setState({ covidOverview: covidResponse.data.data.latest_data })
+      console.log("State", this.state.covidOverview)
+      this.setState({ covidDaily: covidResponse.data.data.today })
       console.log(covidResponse.data)
       } catch (error) {
         // this.setState({errors: error.response.data.error, showError: true})
@@ -73,7 +76,7 @@ class App extends React.Component {
             </Col>
           </Row>
         </Container>
-        <DailyCovid covidData={this.state.covid}/>
+        <HistoryCovid covidOverview={this.state.covidOverview}/>
       </div>
     );
   }
