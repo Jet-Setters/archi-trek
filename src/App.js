@@ -9,6 +9,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import HistoryCovid from './HistoryCovid.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends React.Component {
