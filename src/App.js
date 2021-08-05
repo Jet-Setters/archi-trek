@@ -27,25 +27,25 @@ class App extends React.Component {
   }
 
   getLocation = async (e) => {
-    const local = "http://localhost:3002";
-    // const heroku = "https://archi-trek.herokuapp.com/"
+    // const local = "http://localhost:3002";
+    const heroku = "https://archi-trek.herokuapp.com/"
     
       
     e.preventDefault();
       try {
-      const locationAPI = `${local}/location?searchQuery=${this.state.searchQuery}`;
+      const locationAPI = `${heroku}/location?searchQuery=${this.state.searchQuery}`;
       const response = await axios.get(locationAPI)
       this.setState({ location: response.data[0] })
       
       const mapAPI = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API}&center=${response.data[0].lat},${response.data[0].lon}&zoom=10`;
       this.setState({ map: mapAPI })
       
-      const weatherAPI = `${local}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
+      const weatherAPI = `${heroku}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
       const weatherResponse = await axios.get(weatherAPI);
       const shorterWeather = weatherResponse.data.slice(0, 8)
       this.setState({ weather: shorterWeather })
   
-      const covidAPI = `${local}/covid?address=${this.state.location.display_name}`
+      const covidAPI = `${heroku}/covid?address=${this.state.location.display_name}`
       const covidResponse = await axios.get(covidAPI);
       this.setState({ covidOverview: covidResponse.data.data.latest_data })
       console.log("State", this.state.covidOverview)
