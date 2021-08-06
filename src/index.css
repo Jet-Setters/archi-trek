@@ -12,6 +12,7 @@ td img {
   width: 30%;
 }
 
-
-
-
+.mb-3 {
+  position: relative;
+  top: -55px;
+}
