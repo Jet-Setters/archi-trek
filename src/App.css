@@ -8,9 +8,9 @@
 }
 
 #formLine {
-  /* width: fit; */
-  height: 70px;
+  width: fit;
+  height: 80px;
   background-color: rgb(124,71,0);
-  /* display: flex; */
-  /* justify-self: end; */
-}
+  display: flex;
+  justify-self: end;
+ } 

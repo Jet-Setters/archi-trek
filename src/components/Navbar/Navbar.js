@@ -13,14 +13,14 @@ class Navbar extends React.Component {
   }
   
   render () {
+    console.log("props", this.props.auth0)
     return (
       <nav className = "NavbarItems">
-        <h1 className = "navbar-logo">Archi-Trek  
+        
+        <h1 className = "navbar-logo">ARCHI-TREK 
           <i className ="fas fa-mountain"></i>
         </h1>
-
-      
-
+        
         <div className = "menu-icon" onClick={this.handleClick}>
           <i className = {this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
         </div>
@@ -32,12 +32,12 @@ class Navbar extends React.Component {
         <LogoutButton> Logout </LogoutButton>
         </div>
         
-        <span title = {this.props.auth0.user.name}>
         {this.props.auth0.isAuthenticated && 
+        <span title = {this.props.auth0.user.name}>
         <img id = "loginPic" src={this.props.auth0.user.picture} alt = "">
         </img>
-        }
         </span>
+        }
       </nav>
     )
   }
