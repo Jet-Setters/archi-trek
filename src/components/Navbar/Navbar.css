@@ -71,15 +71,6 @@
   cursor: pointer;
 }
 
-#refresh {
-  background: none;
-  display: block;
-  margin: none;
-  padding: none;
-  border: 0px;
-  cursor: pointer;
-  color: white;
-}
 
 @media screen and (max-width: 960px) {
   .NavbarItems {

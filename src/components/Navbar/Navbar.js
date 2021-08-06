@@ -15,7 +15,7 @@ class Navbar extends React.Component {
   render () {
     return (
       <nav className = "NavbarItems">
-        <h1 className = "navbar-logo">Archi-Trek  
+        <h1 className = "navbar-logo">Archi-Trek     
           <i className ="fas fa-mountain"></i>
         </h1>
 
