@@ -19,6 +19,7 @@ class App extends React.Component {
       location: [],
       map: "",
       weather: [],
+      planner: [],
       covidOverview: [],
       covidDaily: [],
       error: "",
@@ -42,6 +43,12 @@ class App extends React.Component {
       
       const weatherAPI = `${heroku}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
       const weatherResponse = await axios.get(weatherAPI);
+      this.setState({ weather: weatherResponse.data })
+
+      const dayPlannerAPI = `${local}/dayPlanner?searchQuery=${this.state.searchQuery}&start_date=${this.state.start_date}&end_date=${this.state.end_date}`;
+      const plannerResponse = await axios.get(dayPlannerAPI);
+      this.setState({ planner: plannerResponse.results });
+
       const shorterWeather = weatherResponse.data.slice(0, 8)
       this.setState({ weather: shorterWeather })
   
@@ -75,7 +82,11 @@ class App extends React.Component {
             <Col>
               <HistoryCovid covidOverview={this.state.covidOverview}/>
             </Col>
+            <Col>
+              <DayPlanner planner={this.state.planner} />
+            </Col>
           </Row>
+
         </Container>
         <WeatherGroup weather={this.state.weather} />
       </div>
