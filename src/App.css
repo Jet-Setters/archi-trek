@@ -1,6 +1,4 @@
 * {
-  /* background-color: blanchedalmond; */
-  /* text-align: center; */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -11,6 +9,8 @@
   width: fit;
   height: 20px;
   background-color: rgb(124,71,0);
+
   display: flex;
   justify-self: end;
  } 
+

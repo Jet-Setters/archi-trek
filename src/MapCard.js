@@ -1,9 +1,11 @@
+
 // import React from 'react';
 // import Card from 'react-bootstrap/Card';
 // import Button from 'react-bootstrap/Button';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
 // import Container from 'react-bootstrap/Container';
+
 
 // class MapCard extends React.Component {
 
@@ -29,6 +31,7 @@
       //       </Card.Body>
       //     </Col>
       // </Container>
+
     
 //     )
 //   }
