@@ -7,12 +7,11 @@ import WeatherGroup from './WeatherGroup.js';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-// import HistoryCovid from './HistoryCovid.js';
+import HistoryCovid from './HistoryCovid.js';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MapBox from './MapBox.js'
 import ImgBar from './ImgBar.js'
-// import DayPlanner from './components/DayPlanner';
 
 
 class App extends React.Component {
@@ -32,7 +31,8 @@ class App extends React.Component {
       formattedDateValue: "",
       startDate: "",
       endDate: "",
-      locationImages: []
+      locationImages: [],
+      covidSearch: ""
     }
   }
     
@@ -43,6 +43,8 @@ class App extends React.Component {
     try {
       const locationAPI = `${local}/location?searchQuery=${this.state.searchQuery}`;
       const response = await axios.get(locationAPI)
+      const covidLocation = `${this.state.searchQuery}`
+      this.setState({ covidSearch: covidLocation})
 
       console.log("Search", this.state.searchQuery)
       
@@ -50,30 +52,34 @@ class App extends React.Component {
       const weatherResponse = await axios.get(weatherAPI);
       
       const shorterWeather = weatherResponse.data.slice(0, 8)
+
+      console.log("weather", shorterWeather)
       
       const dayPlannerAPI = `${local}/planner?searchQuery=${this.state.searchQuery}&start_date=${this.state.startDate}&end_date=${this.state.endDate}`;
       const plannerResponse = await axios.get(dayPlannerAPI);
       console.log(plannerResponse)
+
+      this.setState({
+        location:response.data[0],
+      })
       
       
-      // const covidAPI = `${local}/covid?address=${response.data[0].display_name}`
-      // console.log(response.data[0].display_name)
-      // const covidResponse = await axios.get(covidAPI);
+      const covidAPI = `${local}/covid?address=${response.data[0].display_name}`
+      console.log(response.data[0].display_name)
+      const covidResponse = await axios.get(covidAPI);
       
       const imgBarArray = [plannerResponse.data.results[0].days[0].itinerary_items[0].poi.images[0].sizes.medium.url, plannerResponse.data.results[0].days[0].itinerary_items[1].poi.images[0].sizes.medium.url, plannerResponse.data.results[0].days[0].itinerary_items[2].poi.images[0].sizes.medium.url, plannerResponse.data.results[0].days[0].itinerary_items[3].poi.images[0].sizes.medium.url]
 
+
       this.setState({ 
-        location: response.data[0],
         lat: response.data[0].lon,
         lng: response.data[0].lat,
-        // planner: plannerResponse.data.results[0].days[0].itinerary_items,
         weather: shorterWeather,
         locationImages: imgBarArray,
-        // covidOverview: covidResponse.data.data.latest_data,
-        // covidDaily: covidResponse.data.data.today
+        covidOverview: covidResponse.data.data.latest_data,
       })
       console.log("Planner images", this.state.planner[0].poi.images[0].sizes.medium.url)
-      console.log("Planner State", this.state.planner)
+      console.log("Covid", this.state.covidOverview)
     } catch (error) {
       // this.setState({errors: error.response.data.error, showError: true})
     }
@@ -106,7 +112,7 @@ class App extends React.Component {
               <FormSearch getFormSubmit={this.getFormSubmit} onChangeLocation={this.onChangeLocation} handleStartDateChange={this.handleStartDateChange} handleEndDateChange={this.handleEndDateChange}/>
             </Col>
             <div id="mapBox">
-              <MapBox lat={this.state.lat} lng={this.state.lng}/>
+              <MapBox lat={this.state.lat} lng={this.state.lng} covidSearch={this.state.covidSearch}/>
             </div>
           </Row>
         </Container>
@@ -116,13 +122,12 @@ class App extends React.Component {
         <Container>
           <Row>
             <Col >
-              {/* <HistoryCovid covidOverview={this.state.covidOverview}/> */}
+              <HistoryCovid covidOverview={this.state.covidOverview} covidSearch={this.state.covidSearch}/> 
             </Col>
             <Col >
               <WeatherGroup weather={this.state.weather} />
             </Col>
           </Row>
-              {/* <DayPlanner planner={this.state.planner} /> */}
         </Container>
       </div>
     );

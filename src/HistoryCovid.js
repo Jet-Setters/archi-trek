@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Pie } from "react-chartjs-2";
-import { MDBContainer } from "mdbreact";
+// import { Pie } from "react-chartjs-2";
+// import { MDBContainer } from "mdbreact";
+import Test from './TestComponent.js'
 
 const HistoryCovid = (props) => {
   
@@ -9,11 +10,10 @@ const HistoryCovid = (props) => {
   
   useEffect(() => {
     console.log("in child", props.covidOverview)
-    // if (dataPie !== savedChartData) {
-  delete props.covidOverview.calculated;
-  const chartData = Object.values(props.covidOverview);
-  const chartObj = {
-    labels: ["Confirmed", "Critical", "Deaths", "Recovered"],
+    delete props.covidOverview.calculated;
+    const chartData = Object.values(props.covidOverview);
+    const chartObj = {
+      labels: ["Confirmed", "Critical", "Deaths", "Recovered"],
       datasets: [
         {
           data: chartData,
@@ -36,20 +36,26 @@ const HistoryCovid = (props) => {
         }
       ]
     }
-  console.log("chart data", chartData)
-  // setTimeout(function() {
-    console.log("Work")
-  // setSavedChartData(chartObj)
-  // setDataPie(savedChartData)
-  // }, 2000)
-// }
-})
+    console.log("chart data", chartData)
+    // setTimeout(function() {
+      console.log("Work")
+      setSavedChartData(chartObj)
+      setDataPie(savedChartData)
+      // }, 2000)
+      // }
+    }, [props.covidOverview])
+    
+    return (
+    <>
 
-  return (
+    <Test covidSearch={props.covidSearch} dataPie={dataPie} />
+    {/* {props.covidSearch.length > 0 ?
     <MDBContainer>
       <h3 id="h3covid" className="mt-5">HISTORICAL COVID DATA</h3>
       <Pie data={dataPie} options={{ responsive: true }} />
-    </MDBContainer>
+    </MDBContainer> : ""
+    } */}
+    </>
   );
 }
 
