@@ -10,7 +10,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import HistoryCovid from './HistoryCovid.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DayPlanner from './components/DayPlanner';
+// import DayPlanner from './components/DayPlanner';
 
 
 class App extends React.Component {
@@ -85,7 +85,7 @@ class App extends React.Component {
               <HistoryCovid covidOverview={this.state.covidOverview}/>
             </Col>
             <Col>
-              <DayPlanner planner={this.state.planner} />
+              {/* <DayPlanner planner={this.state.planner} /> */}
             </Col>
           </Row>
 

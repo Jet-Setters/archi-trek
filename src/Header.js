@@ -4,9 +4,10 @@ import './Header.css';
 class Header extends React.Component {
   render () {
     return (
-      <h1>
-        Archi-Trek
-      </h1>
+      <h4>
+        <hr />
+         © Jet-Setters
+      </h4>
     )
   }
 }

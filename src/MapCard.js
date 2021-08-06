@@ -1,9 +1,9 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-// import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import './index.css';
 
 class MapCard extends React.Component {
 
@@ -23,7 +23,6 @@ class MapCard extends React.Component {
               <Card.Text>Lon: {this.props.location.lon}</Card.Text>
               </Col>
               </Row>
-              {/* <Button variant="dark">Bookmark Location</Button> */}
             </Card.Body>
           </Col>
       </Container>
