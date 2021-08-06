@@ -15,8 +15,8 @@ class WeatherGroup extends React.Component {
         <tr>
           <th></th>
           <th>Date</th>
-          <th>Forecast</th>
           <th>Temperatures</th>
+          <th>Forecast</th>
         </tr>
       </thead>
       <tbody>

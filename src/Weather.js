@@ -15,7 +15,7 @@ class Weather extends React.Component {
       /></td>
       <td>{value.date}</td>
       <td>High: {value.maxtemp}°F | Low: {value.mintemp}°F</td>
-      <td>Forecast: {value.description}</td>
+      <td>{value.description}</td>
     </tr>
 
     )

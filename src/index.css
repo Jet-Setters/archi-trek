@@ -1,19 +1,81 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
 .card border-dark {
   margin: 5rem;
   width: 10rem;
 }
 
 #weatherBox {
-  width: 60%;
+  width: 90%;
   margin: 4%;
 }
 
 td img {
-  width: 30%;
+  width: 40%;
+}
+
+.map-container {
+  height: 400px;
+  }
+
+.sidebar {
+  background-color: rgba(35, 55, 75, 0.9);
+  color: #ffffff;
+  padding: 6px 12px;
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  margin: 12px;
+  border-radius: 4px;
+  }
+
+#mapBox {
+  position: relative;
+}
+
+.form-label {
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  letter-spacing: 1.8px;
 }
 
 .mb-3 {
+  /* background-color: #43724d; */
+  background-color: rgb(35, 55, 75);
+  border-radius: 5px;
   position: relative;
-  top: -55px;
+  margin-top: 1%;
 }
+
+.mb-3 input {
+  border-radius: 0px 0px 0px 0px;
+  border: none;
+  border: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#h3covid {
+  margin-block-start: 0px;
+}
+
+.imgbar img {
+  border-radius: 2%;
+  height: 220px;
+  width: 220px;
+  object-fit: cover;
+  margin: 3%;
+}
+
+
+
+
 

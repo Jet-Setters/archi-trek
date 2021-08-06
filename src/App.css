@@ -6,9 +6,11 @@
 }
 
 #formLine {
-  /* width: fit; */
-  height: 70px;
+  width: fit;
+  height: 20px;
   background-color: rgb(124,71,0);
-  /* position: relative;
-  top: 40px; */
-}
+
+  display: flex;
+  justify-self: end;
+ } 
+
