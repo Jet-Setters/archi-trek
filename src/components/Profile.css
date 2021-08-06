@@ -7,4 +7,8 @@
   text-align: right;
   box-sizing: border-box;
   padding: 10px;
+  background-color: rgba(124,71,0,1);
+  color: white;
+  border: transparent;
+  border-radius: 30px;
 }

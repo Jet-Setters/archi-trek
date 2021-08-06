@@ -1,5 +1,6 @@
 .NavbarItems {
-  background: linear-gradient(90deg, rgb(67, 39, 15), rgba(124,71,0,1) 100%);
+  /* background: linear-gradient(90deg, rgb(67, 39, 15), rgba(124,71,0,1) 100%); */
+  background: rgb(67, 39, 15);
   height: 80px;
   display: flex;
   justify-content: center;
@@ -14,6 +15,7 @@
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
+  font-size: 30px;
 }
 
 #mountain {
@@ -67,7 +69,6 @@
   margin-left: 20px;
   border: 2px solid black;
 }
-
 
 
 @media screen and (max-width: 960px) {
