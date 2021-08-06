@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
 import Header from './Header.js'
-import Footer from './Footer.js';
 import { Auth0Provider } from '@auth0/auth0-react';
 
 ReactDOM.render(
@@ -15,7 +14,6 @@ ReactDOM.render(
     <React.StrictMode>
       <App />
       <Header />
-      <Footer />
   
     </React.StrictMode>
   </Auth0Provider>,

@@ -15,8 +15,7 @@ class Navbar extends React.Component {
   render () {
     return (
       <nav className = "NavbarItems">
-        <h1 className = "navbar-logo">Archi-Trek     
-          <i className ="fas fa-mountain"></i>
+        <h1 className = "navbar-logo">Archi-Trek <i className ="fas fa-mountain"></i>
         </h1>
 
       
@@ -32,12 +31,14 @@ class Navbar extends React.Component {
         <LogoutButton> Logout </LogoutButton>
         </div>
         
-        <span title = {this.props.auth0.user.name}>
+        
         {this.props.auth0.isAuthenticated && 
-        <img id = "loginPic" src={this.props.auth0.user.picture} alt = "">
-        </img>
-        }
+        <span title = {this.props.auth0.user.name}>
+          <img id = "loginPic" src={this.props.auth0.user.picture} alt = "">
+          </img>
         </span>
+        }
+         
       </nav>
     )
   }
