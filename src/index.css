@@ -11,17 +11,12 @@ main {
 }
 
 #weatherBox {
-  width: 60%;
+  width: 90%;
   margin: 4%;
 }
 
 td img {
-  width: 30%;
-}
-
-.mb-3 {
-  position: relative;
-  top: -55px;
+  width: 40%;
 }
 
 .map-container {
@@ -47,7 +42,8 @@ td img {
 
 .form-label {
   color: white;
-  padding-top: 5px;
+  padding-top: 15px;
+  padding-bottom: 5px;
   letter-spacing: 1.8px;
 }
 
@@ -56,18 +52,27 @@ td img {
   background-color: rgb(35, 55, 75);
   border-radius: 5px;
   position: relative;
+  margin-top: 1%;
 }
 
 .mb-3 input {
   border-radius: 0px 0px 0px 0px;
   border: none;
   border: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.mb-3 input:nth-child(1) {
-  border-radius: 0px 0px 3px 0px;
-  border: none;
-  border: 1px solid black;
+#h3covid {
+  margin-block-start: 0px;
+}
+
+.imgbar img {
+  border-radius: 2%;
+  height: 220px;
+  width: 220px;
+  object-fit: cover;
+  margin: 3%;
 }
 
 

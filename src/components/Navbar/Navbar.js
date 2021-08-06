@@ -13,7 +13,6 @@ class Navbar extends React.Component {
   }
   
   render () {
-    console.log("props", this.props.auth0)
     return (
       <nav className = "NavbarItems">
         

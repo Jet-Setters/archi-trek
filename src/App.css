@@ -9,7 +9,7 @@
 
 #formLine {
   width: fit;
-  height: 80px;
+  height: 20px;
   background-color: rgb(124,71,0);
   display: flex;
   justify-self: end;
