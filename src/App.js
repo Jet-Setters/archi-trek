@@ -8,6 +8,9 @@ import WeatherGroup from './WeatherGroup.js';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import HistoryCovid from './HistoryCovid.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -16,29 +19,29 @@ class App extends React.Component {
       location: [],
       map: "",
       weather: [],
-      covid: [],
       planner: [],
+      covidOverview: [],
+      covidDaily: [],
       error: "",
       searchQuery: ""
     }
   }
 
   getLocation = async (e) => {
-    const local = "http://localhost:3002";
+    // const local = "http://localhost:3002";
+    const heroku = "https://archi-trek.herokuapp.com/"
     
       
     e.preventDefault();
       try {
-      const locationAPI = `${local}/location?searchQuery=${this.state.searchQuery}`;
+      const locationAPI = `${heroku}/location?searchQuery=${this.state.searchQuery}`;
       const response = await axios.get(locationAPI)
       this.setState({ location: response.data[0] })
       
       const mapAPI = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_API}&center=${response.data[0].lat},${response.data[0].lon}&zoom=10`;
-      // const mapResponse = await axios.get(mapAPI);
-      // console.log(mapResponse)
       this.setState({ map: mapAPI })
       
-      const weatherAPI = `${local}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
+      const weatherAPI = `${heroku}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}&searchQuery=${this.state.searchQuery}`;
       const weatherResponse = await axios.get(weatherAPI);
       this.setState({ weather: weatherResponse.data })
 
@@ -46,12 +49,15 @@ class App extends React.Component {
       const plannerResponse = await axios.get(dayPlannerAPI);
       this.setState({ planner: plannerResponse.results });
 
-
+      const shorterWeather = weatherResponse.data.slice(0, 8)
+      this.setState({ weather: shorterWeather })
   
-      // const covidAPI = `${local}/covid?address=${this.state.location.display_name}`
-      // const covidResponse = await axios.get(covidAPI);
-      // this.setState({ covid: covidResponse.data })
-    //  console.log(this.state.searchQuery);
+      const covidAPI = `${heroku}/covid?address=${this.state.location.display_name}`
+      const covidResponse = await axios.get(covidAPI);
+      this.setState({ covidOverview: covidResponse.data.data.latest_data })
+      console.log("State", this.state.covidOverview)
+      this.setState({ covidDaily: covidResponse.data.data.today })
+      console.log(covidResponse.data)
       } catch (error) {
         // this.setState({errors: error.response.data.error, showError: true})
       }
@@ -74,7 +80,7 @@ class App extends React.Component {
             
             </Col>
             <Col>
-              <WeatherGroup weather={this.state.weather} />
+              <HistoryCovid covidOverview={this.state.covidOverview}/>
             </Col>
             <Col>
               <DayPlanner planner={this.state.planner} />
@@ -82,6 +88,7 @@ class App extends React.Component {
           </Row>
 
         </Container>
+        <WeatherGroup weather={this.state.weather} />
       </div>
     );
   }
