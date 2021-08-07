@@ -3,8 +3,8 @@
 - Vacation planning app
   - User enters location
   - App gives back weather for the week with icons for different types of weather (Carousel Cards)
-  - Also gives suggestions for what to pack
-      - (Based on temperature, number of days the trip is, whether or not there will be swimming involved, etc)
+<!--   - Also gives suggestions for what to pack
+      - (Based on temperature, number of days the trip is, whether or not there will be swimming involved, etc) -->
   - Use OAuth to login so that users can enter their address (and have that info stored securely)
     - see how far they are from the location they’re planning 
     - so they can know what means of transportation are available for them to use 
